@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Una aplicación que calcula la edad de una persona
+      // Pedimos mediante un prompt() el nombre del usuario
+      const nombre = prompt("Ingrsá tu nombre");
+      // Pedimos el año de nacimiento también mediante un prompt()
+      const anioNacimiento = prompt("Ingrsá tu año de nacimiento");
+      // Año actual
+      const anioActual = 2023;
+      // Calculamos la edad
+      const edad = anioActual - anioNacimiento;
+      // Mostramos el mensaje concatenando las variables
+      alert(nombre + ", tenes " + edad + " años. Estás arruinado.");
+    </script>
+  </body>
+</html>
