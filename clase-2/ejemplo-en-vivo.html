@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Usuario ya creado
+      const usuario = "Ricardo";
+      const clave = "1234";
+
+      // Usuario que se está logueando
+      let usuario_prompt = prompt("Igresá tu usuario:");
+      let clave_prompt = prompt("Ingresá tu clave:");
+
+      // Algoritmo para login
+      if (usuario == usuario_prompt && clave == clave_prompt) {
+        alert("Bienvenid@ " + usuario);
+      } else {
+        if (usuario != usuario_prompt) {
+          alert("El usuario " + usuario + " no existe.");
+        } else if (clave != clave_prompt) {
+          alert("La contraseña es incorrecta.");
+        }
+      }
+    </script>
+  </body>
+</html>

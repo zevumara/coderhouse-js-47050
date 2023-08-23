@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Operadores lógicos de COMPARACIÓN
+
+      // < cuando un valor es menor que otro
+      // <= cuando un valor es menor o igual que otro
+
+      // > cuando es mayor que otro
+      // >= cuando un valor es mayor o igual que otro
+
+      // == cuando dos valores son iguales
+      // != cuando dos valores son distintos
+
+      // Algoritmo de vigilante
+      const genero = prompt("Decime tu género:");
+      const anioNacimiento = prompt("Decime tu fecha de nacimiento:");
+      const edad = 2023 - parseInt(anioNacimiento);
+
+      let mayorEdad;
+
+      if (edad >= 18) {
+        mayorEdad = true;
+      } else {
+        mayorEdad = false;
+      }
+
+      if (mayorEdad) {
+        // Es mayor edad
+        if (genero == "F" || genero == "Femenino" || genero == "femenino") {
+          // Es género femenino
+          alert("Podés pasar gratis.");
+        } else {
+          alert("Pasá por caja campeón.");
+        }
+      } else {
+        // Es menor de edad
+        alert("Sos menor, no podés pasar.");
+      }
+    </script>
+  </body>
+</html>
