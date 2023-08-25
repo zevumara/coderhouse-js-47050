@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Consola de comandos usando WHILE, FOR, Y SWITCH
+      let comando;
+
+      // Que ejecute este bloque de código mientras el comando sea distinto a Salir
+      while (comando != "Salir") {
+        // Tomamos el comando del prompt
+        comando = prompt("Ingrese el comando:\n\n- Salir\n- Ver productos\n- Hackear NASA");
+
+        // Switch para detectar el comando
+        switch (comando) {
+          case "Salir":
+            alert("Cerrando consola de comandos...");
+            break;
+          default:
+            alert("El comando ingresado no se reconoce.");
+            break;
+          case "Ver productos":
+            for (let producto = 1; producto <= 4; producto++) {
+              alert("Este es el producto N° " + producto);
+            }
+            break;
+          case "Hackear NASA":
+            alert("Conectándose con la IP de la NASA... Aguarde un momento por favor.");
+            let clave = prompt("Ingrese la clave por favor:");
+            if (clave == "1234") {
+              alert(
+                "Conectado con la base de datos de la NASA. Obteniendo información extraterrestre..."
+              );
+              window.location =
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgYH9v2OHdKM5O1EXnoYDYWsJuGZVFJ-5FekkTvt95sJpzrokmlw6unejND3CQ7czger8&usqp=CAU";
+              comando = "Salir";
+            }
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
