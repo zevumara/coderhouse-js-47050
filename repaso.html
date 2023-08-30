@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ¿Qué define un bloque de código?
+      /* Bloque de código:
+      Se define por las llaves { }, todo lo que esté en vuelto en
+      llaves es un bloque de código
+      */
+
+      // Que pasa si...
+      // Cuantos mensajes de alert van a saltar
+      let hasta = 5;
+      let contador = 0;
+      for (let i = 1; i <= hasta; i++) {
+        contador = contador + 1;
+        alert(contador);
+      }
+
+      /* Scope:
+      Si yo declaro una variable por fuera de cualquier bloque de código,
+      tiene alcance a cualquier bloque o parte de la aplicación. Eso se llama
+      variable GLOBAL
+      */
+      const edad = 24; // VARIABLE GLOBAL
+
+      if (edad > 18) {
+        /* Scope:
+        Si yo declaro una variable dentro de un bloque de código,
+        tiene alcance solo a ese bloque de código. Eso se llama variable LOCAL */
+        const esMayor = true; // VARIABLE LOCAL
+      }
+
+      console.log(esMayor);
+
+      // Función regular
+      function sumar(valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      }
+
+      // Función anónima
+      const sumar = function (valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      };
+
+      // Función flecha
+      const sumar = (valor1, valor2) => {
+        const resultado = valor1 + valor2;
+        return resultado;
+      };
+    </script>
+  </body>
+</html>

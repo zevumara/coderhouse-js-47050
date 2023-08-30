@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Usando una función con variables globales (engorroso)
+      let valor1 = 5;
+      let valor2 = 3;
+      let resultado;
+
+      function sumar() {
+        resultado = valor1 + valor2;
+      }
+
+      sumar();
+      console.log("El resultado de la suma es: " + resultado);
+
+      valor1 = 20;
+      valor2 = 30;
+      sumar();
+      console.log("El resultado de la suma es: " + resultado);
+
+      // Versión usando parámetros y return (variables locales)
+
+      function suma(valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      }
+
+      console.log("El resultado de la resta es: " + suma(10, 10));
+    </script>
+  </body>
+</html>
