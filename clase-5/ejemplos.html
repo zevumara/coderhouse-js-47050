@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const nombre_producto = "Celular Samsung";
+      // const stock_producto = 25;
+      // const precio_producto = 100000;
+
+      const celularSamsung = {
+        nombre: "Celular Samsung",
+        stock: 12,
+        precio: 300000,
+      };
+
+      const celularMotorola = {
+        nombre: "Celular Motorola",
+        stock: 13,
+        precio: 100000,
+      };
+
+      const celularXiaomi = {
+        nombre: "Celular Xiamoi",
+        stock: 45,
+        precio: 100000,
+      };
+
+      // Constructor "molde"
+      function Producto(nombre, stock, precio, categoria) {
+        this.nombre = nombre;
+        this.stock = stock;
+        this.precio = precio;
+        this.categoria = categoria;
+
+        this.mostrarNombre = function () {
+          alert(this.nombre);
+        };
+      }
+
+      const celuXiaomi = new Producto("Xiaomi", 25, 100000, "Celular", "Cualquier cosa");
+      const celuSamsung = new Producto("Celular Samsung", 14, 200000, "Celular", "Cualquier cosa");
+      const celuMotorola = new Producto(
+        "Celular Motorola",
+        35,
+        150000,
+        "Celular",
+        "Cualquier cosa"
+      );
+      const notebookLenovo = new Producto(
+        "Notebook Lenovo",
+        35,
+        650000,
+        "Notebook",
+        "Cualquier cosa"
+      );
+    </script>
+  </body>
+</html>

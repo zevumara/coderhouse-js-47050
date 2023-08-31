@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Función regular: Posee hoisting (se elevan)
+      function sumar_regular(valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      }
+
+      // Función anónima: No posee hoisting
+      const sumar_anonima = function (valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      };
+
+      // Función flecha: No posee hoisting
+      const sumar_flecha = (valor1, valor2) => {
+        const resultado = valor1 + valor2;
+        return resultado;
+      };
+
+      console.log("Función regular: " + sumar_regular(10, 10));
+      console.log("Función anónima: " + sumar_anonima(10, 10));
+      console.log("Función flecha: " + sumar_flecha(10, 10));
+    </script>
+  </body>
+</html>
