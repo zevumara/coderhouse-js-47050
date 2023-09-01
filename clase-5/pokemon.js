@@ -42,7 +42,7 @@ class Pokemon {
   // 1. Que le reste energía al pokemon enemigo
   // 2. Que reste la cantidad de energía según el nivel del pokemon que ataca
   atacar(objetivo) {
-    objetivo.restarEnergia(this.nivel);
+    objetivo.restarEnergia(this.nivel - objetivo.nivel + 1);
   }
 
   // 1. Que reste energía al pokemon según la cantidad
