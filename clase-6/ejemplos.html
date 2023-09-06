@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="agregarItem()">Agregar item</button>
+    <script>
+      // Una lista con los conocimientos adquiridos hasta el momento
+      let lista = "Sebastián Ricardo Horacio Ana"; // String vacío
+
+      function agregarItem() {
+        const nuevoItem = prompt("¿Qué item querés agregar a la lista?");
+        lista = lista + nuevoItem + " ";
+        console.log(lista);
+
+        // Limitaciones:
+        // - No me permite manipular fácilmente el contenido de la lista
+        // - No me permite trabajar por ejemplo con objetos
+      }
+
+      // Arrays
+      // Sintaxis
+      const listadoVacio = []; // Array vacío
+      // A cada elemento, se le asigna un índice (o index) automáticamente.
+      // Siempre arranca desde el 0.
+      const listado = ["Sebastián", "Ricardo", "Horacio", 33, true, false, "Hola"];
+      console.log(listado);
+      // Curiosidad
+      console.log("¿Es un array?:", Array.isArray(lista));
+
+      console.log(listado[1]); // Ricardo
+
+      // Con la propiedad lengiht puedo saber la cantidad de elementos del array
+      console.log("Cantidad de elementos:", listado.length);
+
+      // For incremental para recorrer el array elemento por elemento
+      console.log("Recorriendo el array con un for incremental:");
+      for (let indice = 0; indice < listado.length; indice++) {
+        console.log(listado[indice]);
+      }
+
+      // For of fachero
+      for (const nombre of listado) {
+        console.log("Nombre:", nombre);
+        console.log(typeof nombre);
+      }
+
+      // Métodos copados para manipular el array
+      // Push: agrega un elemento al final del array
+      const elementoNuevo = {
+        nombre: "Celular",
+        precio: 10000,
+      };
+      listado.push(elementoNuevo);
+      listado.push("José");
+      console.log(listado);
+
+      // indexOf: Nos devuelve el índice del elemento
+      const indiceElemento = listado.indexOf("Ricardo");
+      console.log("Índice de Ricardo:", indiceElemento);
+
+      // Splice: elimina uno o varios elementos a partir de un índice (tiene dos parámetros)
+      listado.splice(1, 1);
+      console.log(listado);
+
+      // Unshift: agrega un elemento al INICIO del array
+      listado.unshift("Ana");
+      console.log(listado);
+
+      // Pop: elemina el último elemento del array
+      listado.pop();
+      console.log(listado);
+
+      // Shift: elimina el primer elemento del array
+      listado.shift();
+      console.log(listado);
+
+      // Join: genera un string (una cadena de caracteres) con todos los
+      // elementos separados por el parámetro que le pasemos
+      console.log(listado.join("\n"));
+
+      // Concat: concatena dos arrays (fusiona)
+      const listadoNuevo = ["Goku", "Ten Shin Han"];
+      const listadoFuncionado = listado.concat(listadoNuevo);
+      console.log(listadoFuncionado);
+
+      // Includes: me permite saber si existe un elemento dentro del array
+      console.log("¿Hay un Goku en el listado?", listadoFuncionado.includes("Ricardo"));
+    </script>
+  </body>
+</html>

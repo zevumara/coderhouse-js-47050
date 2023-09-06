@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Repaso objetos
+      // Dos formas de crear objetos:
+
+      // 1. Forma literal, o forma "express":
+      const producto = {
+        nombre: "Celular Xiaomi",
+        categoria: "Celulares",
+        precio: 100000,
+        stock: 25,
+      };
+
+      // ¿Cómo llamo a una propiedad del objeto?
+      console.log(producto.nombre);
+
+      // 2. Forma clase constructora "molde": En caso de tener múltiples objetos
+      // que compartan propiedades y métodos, es la más recomendada
+      class Producto {
+        constructor(nombre, categoria, precio, stock) {
+          this.nombre = nombre;
+          this.categoria = categoria;
+          this.precio = precio;
+          this.stock = stock;
+        }
+
+        // Método (función interna del objeto)
+        mostrarNombre() {
+          alert(this.nombre);
+        }
+      }
+
+      // Con una sola línea de código, puedo duplicar el objeto
+      // (en programación crear un objeto en base a una clase se le llama INSTANCIAR)
+      const celuXiaomi = new Producto("Celular Xiaomi", "Celulares", 100000, 25);
+
+      // ¿Cómo llamo a un método de un objeto?
+      celuXiaomi.mostrarNombre();
+    </script>
+  </body>
+</html>
