@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Función regular
+      function sumarRegular(valor1, valor2) {
+        const resultado = valor1 + valor2;
+        return resultado;
+      }
+
+      console.log("Función regular:", sumarRegular(10, 10)); // ¿Qué me imprime en consola?
+
+      // Función flecha sin llaves (una sola línea) hace un return implícito
+      const sumarFlecha = (valor1, valor2) => valor1 + valor2;
+
+      console.log("Función flecha:", sumarFlecha(10, 10));
+
+      // Algunas funciones nativas de JavaScript para los strings
+      let frase = "Hola Ricky, esto es una cadena de texto (string).";
+
+      console.log("Original:", frase);
+
+      // Me transforma mi string a minúsculas.
+      console.log("Método toLowerCase:", frase.toLowerCase());
+      // A mayúsculas
+      console.log("Método toUpperCase:", frase.toUpperCase());
+      // Se fija si existe algún carácter (palabra, frase, etc) dentro del string
+      console.log(frase.includes("Pepe"));
+    </script>
+  </body>
+</html>
