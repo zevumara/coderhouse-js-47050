@@ -4,21 +4,25 @@ const carrito = [];
 const arroz = {
   nombre: "Arroz blanco",
   precio: 100,
+  subtotal: 100,
   cantidad: 1,
 };
 const arrozIntegral = {
   nombre: "Arroz integral",
   precio: 100,
+  subtotal: 100,
   cantidad: 1,
 };
 const fideos = {
   nombre: "Fideos",
   precio: 200,
+  subtotal: 200,
   cantidad: 1,
 };
 const alfajor = {
   nombre: "Alfajor",
   precio: 50,
+  subtotal: 50,
   cantidad: 1,
 };
 
@@ -51,20 +55,23 @@ function buscar() {
 function agregar() {
   // Pido por prompt los datos del producto
   const nombrePrompt = prompt("Introduzca el nombre del producto:");
-  const precioPrompt = prompt("Introduzca el precio del producto:");
 
   // Creo un objeto con los datos obtenidos del prompt
   const nuevoProducto = {
     nombre: nombrePrompt,
     precio: parseInt(precioPrompt),
+    subtotal: parseInt(precioPrompt),
     cantidad: 1,
   };
 
+  // Si lo encuentra, devuelve (return) el producto, sino
+  // devuelve undefined
   const productoEncontrado = enCarrito(nombrePrompt);
 
   if (productoEncontrado) {
     productoEncontrado.cantidad++;
-    productoEncontrado.precio = productoEncontrado.precio * productoEncontrado.cantidad;
+    productoEncontrado.precio = parseInt(precioPrompt);
+    productoEncontrado.subtotal = parseInt(precioPrompt) * productoEncontrado.cantidad;
   } else {
     // Push agrega el producto en el array
     carrito.push(nuevoProducto);
@@ -81,16 +88,17 @@ function listar() {
   console.log("Productos que hay en el carrito:");
 
   // Recorremos los elementos del array carrito
-  carrito.forEach((producto) => {
+  carrito.forEach((elemento) => {
     console.log("----------");
-    console.log("Nombre:", producto.nombre);
-    console.log("Precio:", producto.precio);
-    console.log("Cantidad:", producto.cantidad);
+    console.log("Nombre:", elemento.nombre);
+    console.log("Precio:", elemento.precio);
+    console.log("Cantidad:", elemento.cantidad);
+    console.log("Subtotal:", elemento.subtotal);
   });
 
   // Reduce: Recorre cada elemento y va acumulando una suma de una propiedad
   // del elemento, en este caso el precio
-  const totalCarrito = carrito.reduce((acu, el) => acu + el.precio, 0);
+  const totalCarrito = carrito.reduce((acu, el) => acu + el.subtotal, 0);
   console.log("TOTAL DEL CARRITO: $", totalCarrito);
 
   // Map: crea un nuevo array transformando los elementos. En este caso

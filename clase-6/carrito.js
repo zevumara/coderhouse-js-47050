@@ -24,7 +24,7 @@ carrito.push(alfajor);
 // Función que se encargue de buscar si un producto existe en nuestro carrito (array)
 function enCarrito(nombrePrompt) {
   for (const producto of carrito) {
-    if ((producto.nombre = nombrePrompt)) {
+    if (producto.nombre == nombrePrompt) {
       return producto;
     }
   }

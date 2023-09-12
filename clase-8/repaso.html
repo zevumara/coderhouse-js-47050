@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Objetos de productos
+      const arroz = {
+        nombre: "Arroz blanco",
+        precio: 100,
+        cantidad: 1,
+      };
+      const arrozIntegral = {
+        nombre: "Arroz integral",
+        precio: 200,
+        cantidad: 1,
+      };
+      const fideos = {
+        nombre: "Fideos",
+        precio: 250,
+        cantidad: 1,
+      };
+      const sopaArroz = {
+        nombre: "SOPA DE ARROZ",
+        precio: 550,
+        cantidad: 1,
+      };
+      // Array con productos
+      const carrito = [arroz, arrozIntegral];
+      carrito.push(fideos);
+      carrito.push(sopaArroz);
+
+      // ¿Cuántos elementos va a tener el array carrito?
+      console.log("Array carrito:", carrito);
+
+      // Find
+      const resultadoFind = carrito.find((producto) => producto.nombre == "Arroz blanco");
+
+      // ¿Qué me imprime el console.log?
+      console.log("Resultado del find:", resultadoFind);
+
+      // Filter
+      const resultadoFilter = carrito.filter((elemento) =>
+        elemento.nombre.toLowerCase().includes("arroz")
+      );
+
+      // ¿Qué me imprime el console.log?
+      console.log("Resultado filter:", resultadoFilter);
+    </script>
+  </body>
+</html>
