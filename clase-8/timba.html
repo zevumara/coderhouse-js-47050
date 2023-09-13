@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Generar aleatoriamente el número ganador
+      const numeroGanador = Math.round(Math.random() * 10);
+      console.log(numeroGanador);
+      // Pedirle al usuario a que número le quiere jugar
+      const numeroElegido = parseInt(
+        prompt("¿A qué número le querés jugar? Tu vida está en juego.")
+      );
+
+      // Comparamos los números
+      if (numeroGanador === numeroElegido) {
+        alert("¡Ganaste! ¡Seguís con vida!");
+      } else {
+        alert("Nos vemos en Disney.");
+      }
+    </script>
+  </body>
+</html>

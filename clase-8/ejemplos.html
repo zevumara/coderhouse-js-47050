@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("Valor máximo:", Math.max(55, 13, 0, -25, 93, 4));
+      console.log("Valor mínimo:", Math.min(55, 13, 0, -25, 93, 4));
+
+      const valor = 3.49;
+
+      // CEIL: Me redondea hacia arriba
+      console.log("Ceil:", Math.ceil(valor));
+
+      // FLOOR: Me redondea hacia abajo
+      console.log("Floor:", Math.floor(valor));
+
+      // ROUND: Me redondea hacia abajo o hacia arriba dependiendo del decimal
+      console.log("Round:", Math.round(valor));
+
+      // Math: Número aleatorio entre 0 y 1
+      console.log("Random:", Math.random());
+
+      // Para usar el objeto Date() hay que instanciarlo
+      const fecha = new Date();
+      console.log("Fecha:", fecha);
+
+      console.log(fecha.toTimeString());
+
+      const fechaNacimiento = new Date("January 29, 1987");
+      console.log(fechaNacimiento.getDay());
+    </script>
+  </body>
+</html>
