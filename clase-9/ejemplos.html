@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .fondo {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="link">Sección 1</li>
+        <li class="link"><a href="#">Sección 2</a></li>
+      </ul>
+    </nav>
+    <input id="correo" type="email" value="Acá va tu correo" />
+    <main id="home" style="border: 1px red solid">
+      <h1 id="encabezado">Esto es un título</h1>
+      <p class="texto">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, unde? Quo eveniet obcaecati
+        enim temporibus iste tempora, quos ratione accusamus?
+      </p>
+      <p class="texto">Lorem ipsum dolor sit amet.</p>
+    </main>
+    <button onclick="pruebas()">Botón de prueba</button>
+    <button onclick="crear()">Modo Dios</button>
+    <button onclick="eliminar()">Eliminar</button>
+    <script>
+      // PASO 1: Seleccionar elementos con estos métodos
+      // getElementById: Selecciona un elemento según su atributo ID
+      const divMain = document.getElementById("home");
+      // getElementsByClassName: Seleccionamos todos los elementos según su atributo class
+      const textos = document.getElementsByClassName("texto");
+      // getElementsByTagName:
+      const liNavbar = document.getElementsByTagName("li");
+      // querySelector: Seleccionamos un elemento según los selectores de CSS
+      const encabezadoH1 = document.querySelector("#encabezado");
+      // querySelectorAll: Seleccionamos todos los elementos según los selectores de CSS
+      const links = document.querySelectorAll("li");
+
+      function pruebas() {
+        // PASO 2: Modificar los elementos
+        // innerText: modifica el texto interno del elemento
+        encabezadoH1.innerText = "Hola Ricky";
+        // innerHTML: modifica el contenido del elemento con código HTML
+        divMain.innerHTML +=
+          "<h2>Esto es un h2</h2><p>Esto es otro párrafo.</p><img src='gatito.png' width='100'>";
+        // className: le modifica el atributo clase al elemento
+        divMain.className = "fondo";
+        // style: le modifica los estilos a un elemento
+        for (txt of textos) {
+          txt.style.color = "red";
+          txt.style.fontSize = "40px";
+          txt.style.marginTop = "140px";
+        }
+        // value: Modifica el atributo value de los input
+        const inputCorreo = document.querySelector("#correo");
+        inputCorreo.value = "sebastiancamara@gmail.com";
+        // parentElement: Selecciona el elemento padre
+        encabezadoH1.parentElement.innerText = "Hola";
+      }
+
+      // Cómo creamos elementos
+      function crear() {
+        // createElement: Crea un elemento HTML
+        const miDiv = document.createElement("div");
+        // Con innerHTML le doy contenido
+        miDiv.innerHTML = `
+        <h1 class='fondo'>
+          Hola, fui creado de la nada, 
+          gracias al poder de JavaScript
+        </h1>`;
+        // Con append lo agrego al body
+        document.body.append(miDiv);
+        // O también lo puede agregar a un elemento seleccionado previamente
+        divMain.append(miDiv);
+      }
+
+      // Con remove() elimino elementos.
+      function eliminar() {
+        divMain.remove();
+      }
+    </script>
+  </body>
+</html>

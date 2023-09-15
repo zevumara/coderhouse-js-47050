@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Creo la fecha con mi año de nacimiento
+      const fechaNacimiento = new Date(1988, 3, 10);
+
+      // Obtengo el día con el método getDay()
+      const diaNacimiento = fechaNacimiento.getDay();
+
+      // Array con los días de la semana que los índices coinciden con los días de JavaScript
+      const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+      // Muestro el resultado
+      console.log("Naciste un: " + dias[diaNacimiento]);
+    </script>
+  </body>
+</html>
