@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        border: 2px solid black;
+        padding: 10px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      ul li {
+        cursor: pointer;
+      }
+      ul li:hover {
+        border: 2px solid black;
+      }
+      #inventario li {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>¡Hola! ¿Qué querés comprar?</h1>
+      <ul>
+        <li onclick="comprar(pocion)">Poción de Vida</li>
+        <li onclick="comprar(espada)">Espada</li>
+        <li onclick="comprar(escudo)">Escudo</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Mi inventario</h2>
+      <ul id="inventario">
+        <!-- Acá vamos a cargar los items que estén en el array
+           inventario dinámicamente con el DOM -->
+      </ul>
+      <h2 id="oro">
+        Oro: <span><!-- Acá va el oro disponible --></span>
+      </h2>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>
