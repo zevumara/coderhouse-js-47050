@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+  <head>
+    <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+    <meta name="generator" content="Hugo 0.118.2" />
+    <title>Ejemplo SPA</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    <link
+      href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <meta name="theme-color" content="#712cf9" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://getbootstrap.com/docs/5.3/examples/cover/cover.css" rel="stylesheet" />
+  </head>
+  <body
+    class="d-flex h-100 text-center text-bg-dark"
+    style="background-image: url(https://wallpaperaccess.com/full/39629.jpg)"
+  >
+    <div id="background"></div>
+    <video id="background-video" autoplay loop muted>
+      <source src="../video.mp4" type="video/mp4" />
+    </video>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">SPA</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link fw-bold py-1 px-0 active" id="btnIndex" data-mostrar="index"
+              >Portada</a
+            >
+            <a
+              class="nav-link fw-bold py-1 px-0"
+              id="btnCaracteristicas"
+              data-mostrar="caracteristicas"
+              >Características</a
+            >
+            <a class="nav-link fw-bold py-1 px-0" id="btnContacto" data-mostrar="contacto"
+              >Contacto</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <main id="index" class="px-3 lead seccion">
+        <h1>SPA: Single-Page Application</h1>
+        <p class="mt-3">
+          Las single-page application (aplicaciónes de una sola página) son sitios web donde todo el
+          contenido pasa por un solo HTML (index.html) pero a medida que vamos ingresando a
+          diferente secciones se va actualizando dinámicamente utilizando el DOM.
+        </p>
+        <p>
+          También pueden cargar contenido externo (APIs) o de otros archivos (.json)
+          asíncronicamente sin necesidad de recargar la página.
+        </p>
+        <p>Por ejemplo, las aplicaciones hechas con React son aplicaciones SPA.</p>
+        <p>
+          <a
+            href="caracteristicas.html"
+            id="btnCaracteristicasIndex"
+            class="btn btn-lg btn-light fw-bold border-white bg-white mt-3 botonSeccion"
+            >✍️ Características</a
+          >
+        </p>
+      </main>
+
+      <section id="caracteristicas" class="seccion ocultar" style="text-align: left">
+        <h1>SPA: Single-Page Application</h1>
+        <p class="lead mt-3">Estas son algunas características de las SPA:</p>
+        <ol>
+          <li>
+            <strong>Estructura de página única:</strong> En una SPA, toda la aplicación se carga en
+            una sola página web al principio y luego se actualiza dinámicamente según las
+            interacciones del usuario, utilizando JavaScript. No se requiere cargar páginas
+            adicionales desde el servidor para la mayoría de las acciones.
+          </li>
+          <li>
+            <strong>Interfaz de usuario dinámica:</strong> Las SPAs proporcionan una experiencia de
+            usuario fluida y rápida, ya que los cambios de contenido ocurren sin necesidad de
+            recargar toda la página.
+          </li>
+          <li>
+            <strong>Mejor para aplicaciones interactivas:</strong> Las SPAs son ideales para
+            aplicaciones web que requieren una gran cantidad de interacción del usuario y
+            actualizaciones en tiempo real, como redes sociales, aplicaciones de correo electrónico
+            y aplicaciones de chat.
+          </li>
+          <li>
+            <strong>Uso extensivo de AJAX:</strong> Las SPAs suelen utilizar solicitudes AJAX para
+            obtener y enviar datos al servidor sin necesidad de recargar la página. Esto contribuye
+            a una experiencia de usuario más rápida y eficiente.
+          </li>
+          <li>
+            <strong>Mayor carga inicial:</strong> Las SPAs a menudo tienen una carga inicial más
+            pesada, ya que se deben descargar todos los recursos necesarios (HTML, JavaScript, CSS)
+            al principio. Sin embargo, las interacciones posteriores son más rápidas.
+          </li>
+        </ol>
+      </section>
+
+      <section id="contacto" class="seccion ocultar" style="text-align: left">
+        <h1>SPA: Single-Page Application</h1>
+        <p class="lead mt-3">Ejemplo de sección de contacto para rellenar secciones.</p>
+        <form>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="Tu correo electrónico"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Tu mensaje"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </section>
+
+      <footer class="mt-auto text-white-50">
+        <p>
+          Ejemplo para diferenciar entre una MPA y una SPA y
+          <strong>ver el poder del DOM en acción</strong>.
+        </p>
+      </footer>
+    </div>
+    <script src="app.js"></script>
+    <script
+      src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

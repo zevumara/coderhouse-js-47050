@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="cuadradoRojo" style="border: 5px solid red; width: 500px; height: 500px"></div>
+    <button id="boton">Esto es un botón</button>
+
+    <p><a href="http://google.com" id="linkAGoogle">Esto es un link a Google</a></p>
+
+    <input type="text" id="input" />
+    <script>
+      const miBoton = document.getElementById("boton");
+
+      // Opción 1: addEventListener()
+
+      // Sintaxis:
+      // ELEMENTO AL QUE SE LE AGREGA EL DETECTOR.addEventListener
+      //(EVENTO DISPARADOR, FUNCIÓN DE RESPUESTA)
+
+      miBoton.addEventListener("click", function () {
+        console.log("Hiciste click en el botón");
+      });
+
+      // Opción 2:
+      miBoton.ondblclick = () => {
+        console.log("Hiciste doble click en el botón");
+      };
+
+      // Seleccionar el elemento
+      const divRojo = document.querySelector("#cuadradoRojo");
+
+      // Mouseover
+      divRojo.addEventListener("mouseover", function () {
+        console.log("Estoy entrenado en el cuadrado rojo.");
+      });
+
+      // Mouseout
+      divRojo.addEventListener("mouseout", function () {
+        console.log("Estoy saliendo del cuadrado rojo.");
+      });
+
+      // Mousemove
+      divRojo.addEventListener("mousemove", function () {
+        console.log("Me estoy moviendo adentro del cuadrado rojo.");
+      });
+
+      // Seleccionar el elemento
+      const miInput = document.querySelector("#input");
+
+      miInput.addEventListener("keydown", function (event) {
+        console.log(event);
+        console.log("Estás presionando la tecla:", event.key);
+        //console.log(`El usuario está escribiendo: ${miInput.value}`);
+      });
+
+      // event.preventDefault();
+      const miLink = document.querySelector("#linkAGoogle");
+
+      miLink.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+        console.log("ESTOY PREVINIENDO EL COMPORTAMIENTO DEFAULT DE HTML.");
+      });
+    </script>
+  </body>
+</html>
