@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="buscador" style="padding: 10px" />
+    <div id="resultados">
+      <!-- Acá vamos a ir mostrando los resultados según lo que
+      ingresemos en el input #buscador -->
+    </div>
+    <script>
+      // Array con strings
+      const listadoItems = ["Arroz", "Alfajor", "Almendras", "Fideos", "Pan"];
+
+      // Seleccionamos los elementos del HTML
+      const inputBuscar = document.querySelector("#buscador");
+      const divResultados = document.querySelector("#resultados");
+
+      // Buscador: cada vez que se actualice el input, se dispara este detector de evento
+      inputBuscar.addEventListener("input", function () {
+        const resultados = listadoItems.filter(
+          (item) =>
+            inputBuscar.value &&
+            item.toLocaleLowerCase().includes(inputBuscar.value.toLocaleLowerCase())
+        );
+        actulizarHTML(resultados);
+      });
+
+      // Función para actualizar nuestro HTML: me muestra los resultados en el
+      // div #resultados
+      function actulizarHTML(resultados) {
+        // Vacío el div antes de mostrar los resultados por las dudas
+        divResultados.innerHTML = "";
+        // Recorro item por item de los resultados y los muestro en párrafo
+        for (const item of resultados) {
+          divResultados.innerHTML += `<p>${item}</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
