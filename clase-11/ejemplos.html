@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      Características del localStorage
+      - Es local o sea que queda guardado indefidenidamente o hasta que se borren
+      los datos de navegación.
+      - Tenemos entre 5 y 10 MB.
+      - IMPORTANTE: Solo se puende almancenar strings (cadenas de texto).
+      - Cada sitio web (o sea cada dominio) tiene su propio localStorage (o sea, no se comparten
+      entre sí)
+      */
+
+      // Cómo se usa
+      // Como guardamos
+      const usuario = "Ricardo";
+      localStorage.setItem("miUsuario", usuario);
+      // Como traemos lo guardado del storage
+      const usuarioStorage = localStorage.getItem("miUsuario");
+      console.log(usuarioStorage);
+      // Eliminar datos del storage
+      // Borrar un item especifico
+      localStorage.removeItem("miUsuario");
+      // Limpio TODO el storage
+      localStorage.clear();
+
+      // Almacenando un objeto
+      const producto = {
+        nombre: "Celular",
+        precio: 100000,
+      };
+
+      localStorage.setItem("miProducto", JSON.stringify(producto));
+      const productoStorage = JSON.parse(localStorage.getItem("miProducto"));
+      console.log(productoStorage);
+    </script>
+  </body>
+</html>

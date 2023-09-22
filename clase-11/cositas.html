@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    a.rojo {
+      color: red;
+    }
+    a.verde {
+      color: green;
+    }
+    a.azul {
+      color: blue;
+    }
+    div {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+    }
+    div.rojo {
+      background-color: red;
+    }
+    div.verde {
+      background-color: green;
+    }
+    div.azul {
+      background-color: blue;
+    }
+    div.oculto {
+      display: none;
+    }
+  </style>
+  <body>
+    <ul>
+      <li>
+        <a href="#" id="linkRojo" class="link rojo" data-color="rojo">Esto es el link rojo</a>
+      </li>
+      <li><a href="#" class="link verde" data-color="verde">Esto es el link verde</a></li>
+      <li><a href="#" class="link azul" data-color="azul">Esto es el link azul</a></li>
+    </ul>
+    <div id="divRojo" class="rojo oculto"></div>
+    <div class="verde oculto"></div>
+    <div class="azul oculto"></div>
+    <script>
+      // Forma "manual" de asignar eventos a los elementos
+      const linkRojo = document.querySelector("#linkRojo");
+      linkRojo.addEventListener("click", function (evento) {
+        evento.preventDefault(); // Prevenimos el comportamiento por defecto de HTML
+        console.log("Estás haciendo click en el link rojo.");
+      });
+
+      // ¿Cómo puedo agregar un addEventListener a todos las clases
+      // .link sin que tener que hacerlo manualmente uno por uno?
+      const links = document.querySelectorAll(".link");
+      links.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          // Dataset: un atributo inventado por nosotros para recibir información
+          console.log(`Este es el color: ${link.dataset.color}.`);
+
+          const divColor = document.querySelector(`div.${link.dataset.color}`);
+          console.log(divColor);
+          divColor.classList.remove("oculto");
+        });
+      });
+
+      // classList: me permite agregar o quitar clases a los elemntos de a una
+      const divRojo = document.querySelector("#divRojo");
+
+      // Agregar clases de CSS
+      divRojo.classList.add("azul");
+      // Remover una clase de CSS
+      divRojo.classList.remove("rojo");
+    </script>
+  </body>
+</html>

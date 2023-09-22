@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btnEntrenar">Entrenar</button>
+    <button id="btnEstado">Estado</button>
+    <button id="btnBorrar">Borrar partida</button>
+    <script>
+      // Botón entrenamiento
+      const btnEntrenar = document.querySelector("#btnEntrenar");
+      btnEntrenar.addEventListener("click", entrenar);
+
+      // Botón estado
+      const btnEstado = document.querySelector("#btnEstado");
+      btnEstado.addEventListener("click", estado);
+
+      // Botón borrar
+      const btnBorrar = document.querySelector("#btnBorrar");
+      btnBorrar.addEventListener("click", borrar);
+
+      // Objeto pokémon
+      const charmander = {
+        nombre: "Charmander",
+        nivel: 0,
+        hp: 3,
+        evoluciones: [, , , , , "Charmelion", , , , , "Charizard"],
+      };
+      const bulbasaur = {
+        nombre: "Bulbasaur",
+        nivel: 0,
+        hp: 3,
+        evoluciones: [, , , , , "Ivysaur", , , , , "Venusaur"],
+      };
+
+      // Traemos del storage nuestro pokémon entrenado
+      const miPokemonStorage = JSON.parse(localStorage.getItem("miPokemon"));
+
+      // Versión fachera
+      let miPokemon = miPokemonStorage || charmander;
+
+      // let miPokemon;
+      // Asignar nuestro pokémon en una variable
+      // Hay un pokémon guardado en el storage?
+      // if (miPokemonStorage) {
+      // Le asigno el pokémon guardado el storage
+      //   miPokemon = miPokemonStorage;
+      // } else {
+      // Asigno el objeto pokémon charmander
+      //   miPokemon = charmander;
+      // }
+
+      // Función para entrenar al pokémon y pueda evolucionar
+      function entrenar() {
+        miPokemon.nivel++;
+        miPokemon.hp += miPokemon.nivel;
+        console.log(`¡Tu ${miPokemon.nombre} subió a nivel ${miPokemon.nivel}!`);
+
+        // Nos fijamos si el índice del array existe según el nivel del pokémon
+        // En caso de que el índice tenga contenido significa que hay una evolución
+        if (miPokemon.evoluciones[miPokemon.nivel]) {
+          const evolucion = miPokemon.evoluciones[miPokemon.nivel];
+          console.log(`¡Enhorabuena! ¡Tu ${miPokemon.nombre} ha evolucionado a ${evolucion}!`);
+          miPokemon.nombre = evolucion;
+        }
+
+        // Guardamos en el storage
+        localStorage.setItem("miPokemon", JSON.stringify(miPokemon));
+      }
+
+      // Función para mostrar el estado del pokémon
+      function estado() {
+        console.log(`Nombre: ${miPokemon.nombre}`);
+        console.log(`Nivel: ${miPokemon.nivel}`);
+        console.log(`HP: ${miPokemon.hp}`);
+      }
+
+      function borrar() {
+        // miPokemon = charmander; Esta línea no sirve ya que si
+        // charmander está entrenado y no recargo la página, va a seguir
+        // mostraron al charmander entrenado. Para reiniciarlo
+        // redefino el objeto:
+        miPokemon = {
+          nombre: "Charmander",
+          nivel: 0,
+          hp: 3,
+          evoluciones: [, , , , , "Charmelion", , , , , "Charizard"],
+        };
+        // Limpio el storage
+        localStorage.clear();
+        console.log("La partida fue borrada.");
+      }
+    </script>
+  </body>
+</html>
