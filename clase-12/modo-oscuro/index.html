@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      padding-top: 60px;
+    }
+    a {
+      text-decoration: none;
+    }
+    .modoOscuro {
+      background-color: black;
+      color: white;
+    }
+    #modo {
+      position: fixed;
+      top: 30px;
+      right: 50%;
+    }
+  </style>
+  <link rel="stylesheet" href="toggle.css" />
+  <body>
+    <label id="modo" class="switch">
+      <input id="inputCheckbox" type="checkbox" class="input" />
+      <span class="slider"></span>
+    </label>
+    <h1>Esto es un ejemplo de modo oscuro simple con JavaScript</h1>
+    <p>
+      Estamos usando .toogle para activar y desactivar la clase del body, y localStorage para
+      mantener la configuración guardada.
+    </p>
+    <div id="mensaje">Modo claro y modo oscuro</div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut voluptas iure repudiandae labore
+      quo dolore voluptate saepe autem iusto sapiente ea, nisi velit officiis est dolores aperiam
+      numquam? Sit recusandae beatae provident odit, facere eaque cupiditate excepturi doloremque
+      nulla impedit! Commodi veritatis provident nesciunt illum quae quasi perferendis sunt aut! Cum
+      repellat animi quos odit aut? Perferendis maxime asperiores sunt veniam quam, veritatis eius
+      numquam fuga id laudantium minima libero praesentium similique doloribus reiciendis sapiente
+      autem error, excepturi consequatur cupiditate est. Aperiam ullam fuga consequatur tenetur
+      voluptatum blanditiis laboriosam eligendi facere aliquid natus, deleniti harum dolores
+      consectetur maiores illo iste.
+    </p>
+    <script>
+      // Esto es una forma fachera de convertir un string a booleano, ya que
+      // localStorage solo acepta strings (cadenas de texto)
+      // Si es "true" devuelve true, sino false
+      let modoOscuro = localStorage.getItem("modoOscuro") === "true";
+      console.log("Booleano:", "modoOscuro");
+
+      // Si modoOscuro está en true, aplico el modo oscuro apenas carga la página
+      if (modoOscuro) {
+        // Simplemente una clase de CSS al body
+        document.body.classList.add("modoOscuro");
+        // Actualizo el slider: Le aplico el atributo checked al input checkbox
+        document.querySelector("#inputCheckbox").checked = true;
+      }
+
+      // Botón toggle
+      const btnModo = document.querySelector("#modo");
+
+      // Evento change para el checkbox (detecta el cambio de estado)
+      btnModo.addEventListener("change", function (e) {
+        // Esto invierte un booleano
+        modoOscuro = !modoOscuro;
+        // Toggle: si tiene la clase la saca, sino la agrega (al body en este caso)
+        document.body.classList.toggle("modoOscuro");
+        // Actualizo el storage
+        localStorage.setItem("modoOscuro", modoOscuro);
+      });
+    </script>
+  </body>
+</html>

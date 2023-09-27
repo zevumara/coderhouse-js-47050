@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // localStorage: Una funcionalidad nativa que nos permite
+      // almacenar datos (strings) de forma local
+
+      // ¿Cómo guardamos una variable en el localStorage?
+      const variable = true;
+      localStorage.setItem("miClave", variable);
+
+      // ¿Cómo cargamos una variable almacenada en el localStorage?
+      localStorage.get("miClave");
+
+      // ¿Qué pasa si quiero guardar un objeto en el storage?
+      // Guardado
+      charmander = {
+        nombre: "Charmander",
+        nivel: 0,
+        hp: 3,
+        evoluciones: [, , , , , "Charmelion", , , , , "Charizard"],
+      };
+      localStorage.setItem("charmander", JSON.stringify(charmander));
+      // Cargado
+      const miPokemon = JSON.parse(localStorage.getItem("charmander"));
+
+      // Lógica del localStorage a la hora de programar
+      // - Primero consultamos el storage apenas carga nuestra aplicación
+      // - Si no hay nada definimos un valor por defecto
+      // - Después hacemos el algoritmo de guardado cuando necesitemos
+    </script>
+  </body>
+</html>

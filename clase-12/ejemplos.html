@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const edad = 25;
+
+      let mayorEdad;
+      if (edad >= 18) {
+        mayorEdad = true;
+      } else {
+        mayorEdad = false;
+      }
+
+      // Alternativa con operador ternario
+      mayorEdad = edad >= 18 ? true : false;
+
+      // Operador lógico AND
+      let temperatura = 20;
+      const diaCaluroso = temperatura > 30 && true;
+      console.log("Día caluroso:", diaCaluroso);
+
+      // Operador lógico OR
+      const usuario = "";
+      const miUsuario = usuario || "Ricardo";
+      console.log("Mi usuario:", miUsuario);
+
+      /*
+      Los valores "falsy" son valores que se evalúan como "false" en contextos booleanos,
+      pero no necesariamente son el valor booleano literal "false".
+      Los valores "falsy" incluyen, entre otros, los siguientes:
+
+      false: El valor booleano literal "false".
+      0: El número cero.
+      "": Una cadena de texto vacía.
+      null: Representa la ausencia de valor o un valor nulo.
+      undefined: Representa una variable no definida.
+      NaN: Representa un valor no numérico.
+      */
+
+      const bulbasaur = {
+        nombre: "Bulbasaur",
+        nivel: 0,
+        hp: 3,
+        evoluciones: [, , , , , "Ivysaur", , , , , "Venusaur"],
+      };
+
+      const charmander = {
+        nombre: "Charmander",
+        nivel: 0,
+        hp: 3,
+        evoluciones: [, , , , , "Charmelion", , , , , "Charizard"],
+      };
+
+      const nombre = bulbasaur.nombre;
+      const vida = bulbasaur.hp;
+
+      // Desestructuración
+      // Con objetos
+      const { nombre: pokemon, hp: HP } = bulbasaur;
+      console.log(pokemon);
+      console.log(HP);
+      // Parámetros
+      function mostrarEstado({ nombre, hp }) {
+        console.log("--------");
+        console.log("Nombre:", nombre);
+        console.log("Vida:", hp);
+        console.log("--------");
+      }
+      mostrarEstado(bulbasaur);
+      // Con arrays
+      const [, , , , , primeraEvolucion, , , , , segundaEvolucion] = charmander.evoluciones;
+      console.log("Primera evolución:", primeraEvolucion);
+      console.log("Segunda evolución:", segundaEvolucion);
+    </script>
+  </body>
+</html>

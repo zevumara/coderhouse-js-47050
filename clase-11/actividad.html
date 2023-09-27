@@ -40,7 +40,7 @@
       const miPokemonStorage = JSON.parse(localStorage.getItem("miPokemon"));
 
       // Versión fachera
-      let miPokemon = miPokemonStorage || charmander;
+      let miPokemon = miPokemonStorage || Object.create(charmander);
 
       // let miPokemon;
       // Asignar nuestro pokémon en una variable
@@ -83,12 +83,7 @@
         // charmander está entrenado y no recargo la página, va a seguir
         // mostraron al charmander entrenado. Para reiniciarlo
         // redefino el objeto:
-        miPokemon = {
-          nombre: "Charmander",
-          nivel: 0,
-          hp: 3,
-          evoluciones: [, , , , , "Charmelion", , , , , "Charizard"],
-        };
+        miPokemon = Object.create(charmander);
         // Limpio el storage
         localStorage.clear();
         console.log("La partida fue borrada.");
