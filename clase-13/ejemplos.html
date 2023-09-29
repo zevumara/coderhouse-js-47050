@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Spred de arrays
+      const nombres = ["Juan", "Julieta", "Carlos", "Mariela"];
+      console.log("Array:", nombres);
+      console.log("Spred de array:", ...nombres);
+
+      const numeros = [4, 77, 92, 10, 3, -32, 54, 11];
+      console.log("Máximo:", Math.max(...numeros));
+      console.log("Mínimo:", Math.min(...numeros));
+
+      const lista = {
+        ...nombres,
+      };
+      console.log("Spread de array en un objeto:", lista);
+
+      // Spread de objetos
+      const producto = {
+        nombre: "Tablet 10'",
+        marca: "Lenovo",
+        stock: 242,
+        precio: 99000,
+        id: "2019301231",
+        categoria: "Celulares y Tablets",
+        subcategoria: "Tablets",
+      };
+
+      const productoCarrito = {
+        ...producto,
+        nombre: "Table 7'",
+        cantidad: 2,
+      };
+
+      console.log(productoCarrito);
+
+      // Spread aplicado a parámetros de una función
+      function listado(...nombres) {
+        console.log(nombres);
+      }
+
+      listado("Sebastián", "Ricardo", "Ana", "Ricky");
+    </script>
+  </body>
+</html>

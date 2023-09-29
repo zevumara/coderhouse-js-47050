@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Alternativa fachera a este condicional
+      const edad = 24;
+      if (edad >= 18) {
+        const estado = "Adulto";
+      } else {
+        const estado = "Menor";
+      }
+      // Versión fachera: Ternario
+      const estado_fachero = edad >= 18 ? "Adulto" : "Menor";
+
+      // Alternativa fachera a este condicional
+      const nombreUsuarioStorage = localStorage.getItem("nombreUsuario");
+
+      if (nombreUsuarioStorage) {
+        const nombreUsuario = nombreUsuarioStorage; // Nombre de usuario guardado
+      } else {
+        const nombreUsuario = "Usuario"; // Nombre de usuario por defecto
+      }
+      // Versión fachera: Ternario
+      const nombreUsuario_fachero1 = nombreUsuarioStorage ? nombreUsuarioStorage : "Usuario";
+      // OR
+      const nombreUsuario_fachero2 = nombreUsuarioStorage || "Usuario";
+
+      // Desestructuración: nos permite desestructurar un objeto
+      // para trabajar solo con las propiedades que nos interesan
+      const producto = {
+        nombre: "Tablet 10'",
+        marca: "Lenovo",
+        stock: 242,
+        precio: 99000,
+        id: "2019301231",
+        categoria: "Celulares y Tablets",
+        subcategoria: "Tablets",
+      };
+      // Versión típica: recibimos el objeto entero como parámetro y usamos
+      // sus propiedades luego
+      function mostrarDetalles(objeto) {
+        console.log("Nombre: ", objeto.nombre);
+        console.log("Stock disponible: ", objeto.stock);
+        console.log("Precio: ", objeto.precio);
+      }
+      // Versión desestructurada: "filtro" solo los parámetros que voy a usar
+      function mostrarDetallesF({ nombre, stock, precio }) {
+        console.log("Nombre: ", nombre);
+        console.log("Stock disponible: ", stock);
+        console.log("Precio: ", precio);
+      }
+      // Las dos funciones se usan igual:
+      mostrarDetallesF(producto);
+
+      /*
+      PIDIENDO AYUDA DESESPERADA A CHAT-GPT:
+      El "acceso condicional a un objeto" en JavaScript se refiere a la técnica
+      de acceder a propiedades de un objeto de manera segura y condicional,
+      lo que significa que verificas si una propiedad existe antes de intentar
+      acceder a ella.
+      
+      Esto es especialmente útil para evitar errores de tipo:
+      "Cannot read property 'x' of undefined"
+      cuando estás tratando de acceder a propiedades anidadas de objetos
+      que pueden no estar definidas.
+      */
+      const persona = {
+        nombre: "Juan",
+        // La propiedad 'direccion' está ausente
+        direccion: {
+          cale: "Hola",
+        },
+      };
+
+      // Sin el operador de condicional de objeto
+      const codigoPostal = persona.direccion.codigoPostal;
+      // Esto generaría un error porque 'direccion' es undefined
+
+      // Con el operador de condicional de objeto
+      const codigoPostalSeguro = persona?.direccion?.codigoPostal;
+      // Esto devuelve undefined sin errores
+    </script>
+  </body>
+</html>
