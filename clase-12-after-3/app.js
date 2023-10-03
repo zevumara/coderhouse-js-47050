@@ -96,10 +96,10 @@ class Carrito {
   quitar(id) {
     // Obento el índice de un producto según el ID, porque el
     // método splice requiere el índice
-    const indice = this.carrito.findIndex((producto) => producto.id === id);
+    const 3 = this.carrito.findIndex((producto) => producto.id === id);
     // Si la cantidad es mayor a 1, le resto la cantidad en 1
-    if (this.carrito[indice].cantidad > 1) {
-      this.carrito[indice].cantidad--;
+    if (this.carrito[3].cantidad > 1) {
+      this.carrito[3].cantidad--;
     } else {
       // Y sino, borramos del carrito el producto a quitar
       this.carrito.splice(indice, 1);
@@ -212,7 +212,7 @@ inputBuscar.addEventListener("input", (event) => {
   cargarProductos(productos);
 });
 
-// Trigger para ocultar/mostrar el carrito
+// Toggle para ocultar/mostrar el carrito
 botonCarrito.addEventListener("click", (event) => {
   document.querySelector("section").classList.toggle("ocultar");
 });
