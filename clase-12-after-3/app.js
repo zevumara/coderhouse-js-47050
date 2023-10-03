@@ -18,12 +18,14 @@ class Producto {
   }
 }
 
+// Clase para que simula la base de datos del e-commerce, acá van a estar
+// todos los productos de nuestro catálogo
 class BaseDeDatos {
   constructor() {
     // Array para el catálogo
     this.productos = [];
     // Empezar a cargar productos
-    this.agregarRegistro(1, "Arroz integral", 400, "Alimentos", "arroz.jpg");
+    this.agregarRegistro(1, "Arroz", 400, "Alimentos", "arroz.jpg");
     this.agregarRegistro(2, "Fideos", 300, "Alimentos", "fideos.jpg");
     this.agregarRegistro(3, "Alfajor", 400, "Alimentos", "alfajor.jpg");
     this.agregarRegistro(4, "Pan", 200, "Alimentos", "pan.jpg");
@@ -54,17 +56,21 @@ class BaseDeDatos {
   }
 }
 
+// Clase carrito que nos sirve para manipular los productos de nuestro carrito
 class Carrito {
   constructor() {
+    // Storage
     const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
     // Array donde van a estar almacenados todos los productos del carrito
     this.carrito = carritoStorage || [];
     this.total = 0; // Suma total de los precios de todos los productos
     this.cantidadProductos = 0; // La cantidad de productos que tenemos en el carrito
+    // Llamo a listar apenas de instancia el carrito para aplicar lo que
+    // hay en el storage (en caso de que haya algo)
     this.listar();
   }
 
-  //
+  // Método para saber si el producto ya se encuentra en el carrito
   estaEnCarrito({ id }) {
     return this.carrito.find((producto) => producto.id === id);
   }
@@ -72,20 +78,24 @@ class Carrito {
   // Agregar al carrito
   agregar(producto) {
     const productoEnCarrito = this.estaEnCarrito(producto);
-
+    // Si no está en el carrito, le mando eun push y le agrego
+    // la propiedad "cantidad"
     if (!productoEnCarrito) {
       this.carrito.push({ ...producto, cantidad: 1 });
     } else {
+      // De lo contrario, si ya está en el carrito, le sumo en 1 la cantidad
       productoEnCarrito.cantidad++;
     }
     // Actualizo el storage
     localStorage.setItem("carrito", JSON.stringify(this.carrito));
-    //
+    // Muestro los productos en el HTML
     this.listar();
   }
 
   // Quitar del carrito
   quitar(id) {
+    // Obento el índice de un producto según el ID, porque el
+    // método splice requiere el índice
     const indice = this.carrito.findIndex((producto) => producto.id === id);
     // Si la cantidad es mayor a 1, le resto la cantidad en 1
     if (this.carrito[indice].cantidad > 1) {
@@ -96,7 +106,7 @@ class Carrito {
     }
     // Actualizo el storage
     localStorage.setItem("carrito", JSON.stringify(this.carrito));
-    //
+    // Muestro los productos en el HTML
     this.listar();
   }
 
@@ -106,7 +116,7 @@ class Carrito {
     this.total = 0;
     this.cantidadProductos = 0;
     divCarrito.innerHTML = "";
-
+    // Recorro producto por producto del carrito, y los dibujo en el HTML
     for (const producto of this.carrito) {
       divCarrito.innerHTML += `
         <div class="productoCarrito">
@@ -120,16 +130,21 @@ class Carrito {
       this.total += producto.precio * producto.cantidad;
       this.cantidadProductos += producto.cantidad;
     }
-
+    // Como no se cuantos productos tengo en el carrito, debo
+    // asignarle los eventos de forma dinámica a cada uno
+    // Primero hago una lista de todos los botones con .querySelectorAll
     const botonesQuitar = document.querySelectorAll(".btnQuitar");
+    // Después los recorro uno por uno y les asigno el evento a cada uno
     for (const boton of botonesQuitar) {
       boton.addEventListener("click", (event) => {
         event.preventDefault();
+        // Obtengo el id por el dataset (está asignado en this.listar())
         const idProducto = Number(boton.dataset.id);
+        // Llamo al método quitar pasándole el ID del producto
         this.quitar(idProducto);
       });
     }
-
+    // Actualizo los contadores del HTML
     spanCantidadProductos.innerText = this.cantidadProductos;
     spanTotalCarrito.innerText = this.total;
   }
@@ -144,24 +159,26 @@ const spanTotalCarrito = document.querySelector("#totalCarrito");
 const divProductos = document.querySelector("#productos");
 const divCarrito = document.querySelector("#carrito");
 const inputBuscar = document.querySelector("#inputBuscar");
+const botonCarrito = document.querySelector("section h1");
 
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
 
-//
+// Mostramos el catálogo de la base de datos apenas carga la página
 cargarProductos(bd.traerRegistros());
 
+// Función para mostrar para renderizar productos del catálogo o buscador
 function cargarProductos(productos) {
   // Vacíamos el div
   divProductos.innerHTML = "";
-  //
+  // Recorremos producto por producto y lo dibujamos en el HTML
   for (const producto of productos) {
     divProductos.innerHTML += `
       <div class="producto">
         <h2>${producto.nombre}</h2>
         <p class="precio">$${producto.precio}</p>
         <div class="imagen">
-          <img src="img/${producto.imagen}" width="100" />
+          <img src="img/${producto.imagen}" />
         </div>
         <a href="#" class="btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
       </div>
@@ -193,4 +210,9 @@ inputBuscar.addEventListener("input", (event) => {
   const palabra = inputBuscar.value;
   const productos = bd.registrosPorNombre(palabra);
   cargarProductos(productos);
+});
+
+// Trigger para ocultar/mostrar el carrito
+botonCarrito.addEventListener("click", (event) => {
+  document.querySelector("section").classList.toggle("ocultar");
 });
