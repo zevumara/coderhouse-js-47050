@@ -198,7 +198,7 @@ function cargarProductos(productos) {
       const idProducto = Number(boton.dataset.id);
       // Uso el método de la base de datos para ubicar el producto según el ID
       const producto = bd.registroPorId(idProducto);
-      //
+      // Llama al método agregar del carrito
       carrito.agregar(producto);
     });
   }
