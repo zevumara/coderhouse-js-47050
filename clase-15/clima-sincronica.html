@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="clima">-</h1>
+    <button id="btnClima">Consultar clima</button>
+    <button id="btnOtraFuncionalidad">Otra funcionalidad</button>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde sunt error similique? Odit
+      dolore hic quasi iusto quibusdam ipsam nihil nobis, ab incidunt est facilis, dolor modi
+      voluptatum praesentium eligendi nemo reiciendis tempore! Ut itaque deleniti neque doloribus
+      minus, alias esse recusandae ullam veniam reiciendis consectetur quaerat eaque laborum optio
+      nihil dolorem iste quis molestiae ad mollitia sunt at. Ad esse voluptatibus similique enim,
+      atque officiis sint, veritatis facere laudantium tempore aperiam qui eaque, obcaecati illo
+      voluptatem necessitatibus! Omnis, tempora ducimus. Magnam dolorem quaerat, nisi aliquam est,
+      quae aperiam facere mollitia voluptatibus a qui expedita vitae, repellat maiores omnis quasi!
+    </p>
+
+    <script>
+      const btnClima = document.querySelector("#btnClima");
+      const btnOtraFuncionalidad = document.querySelector("#btnOtraFuncionalidad");
+      const elementoClima = document.querySelector("#clima");
+
+      btnClima.addEventListener("click", function () {
+        consultarClima();
+      });
+      btnOtraFuncionalidad.addEventListener("click", function () {
+        alert("Esto está simulando otra funcionalidad.");
+      });
+
+      // Simula conectar a un servidor externo para consultar el clima
+      function consultarClima() {
+        console.log("Estoy consultando el clima...");
+        const tiempo = new Date().getTime();
+        const delayDeConexion = 5000;
+
+        // Ciclo "bloqueante" para simular el delay
+        while (new Date().getTime() - tiempo < delayDeConexion) {}
+
+        console.log("Resultado obtenido.");
+        elementoClima.innerText = "24° Soleado";
+      }
+    </script>
+  </body>
+</html>
