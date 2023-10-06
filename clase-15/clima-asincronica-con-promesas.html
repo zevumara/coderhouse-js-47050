@@ -27,7 +27,22 @@
       const elementoClima = document.querySelector("#clima");
 
       btnClima.addEventListener("click", function () {
-        consultarClima();
+        //const promesa = consultarClima();
+        consultarClima()
+          // La promesa se ejecutó existosamente
+          .then((resultado) => {
+            console.log("La conexión fue exitosa: " + resultado);
+            elementoClima.innerText = resultado;
+          })
+          // Hubo un error y no se pudo concretar
+          .catch((error) => {
+            console.log("Hubo un error: " + error);
+          })
+          // Que se ejecuta siempre al finalizar la promesa (sin importar si salió bien o mal)
+          .finally(() => {
+            console.log("Promesa finalizada.");
+            elementoClima.style.border = "5px solid red";
+          });
       });
       btnOtraFuncionalidad.addEventListener("click", function () {
         alert("Esto está simulando otra funcionalidad.");
@@ -35,14 +50,16 @@
 
       // Simula conectar a un servidor externo para consultar el clima
       function consultarClima() {
-        console.log("Estoy consultando el clima...");
-        const tiempo = new Date().getTime();
-        const delayDeConexion = 5000;
-
-        setTimeout(function () {
-          console.log("Resultado obtenido.");
-          elementoClima.innerText = "24° Soleado";
-        }, delayDeConexion);
+        //const promesa = new Promise((resuelta, rechazada) => {
+        return new Promise((resuelta, rechazada) => {
+          console.log("Conectando con el servidor del clima...");
+          const delayConexion = 5000;
+          setTimeout(() => {
+            resuelta("24° Soleado");
+            //rechazada("Hubo un error de conexión");
+          }, delayConexion);
+        });
+        //return promesa;
       }
     </script>
   </body>
