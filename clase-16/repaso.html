@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="boton">Llamar promesa</button>
+    <script>
+      // Botón
+      const boton = document.querySelector("#boton");
+
+      // Evento del botón
+      boton.addEventListener("click", function () {
+        promesa()
+          // ¿En qué bloque de código va a entrar?
+          .then((resultado) => {
+            // Then:
+            console.log("Entré en el THEN: " + resultado);
+          })
+          .catch((resultado) => {
+            // Catch:
+            console.log("Entré en el CATCH: " + resultado);
+          })
+          .finally(() => {
+            // Finally:
+            console.log("Entré en el FINALLY.");
+          });
+      });
+
+      // Función regular que devuelve una promesa
+      function promesa() {
+        return new Promise((resolve, reject) => {
+          reject("Esto simula una respuesta del servidor.");
+        });
+      }
+    </script>
+  </body>
+</html>
