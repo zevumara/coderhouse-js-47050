@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arroz",
+    "precio": 400,
+    "categoria": "Granos",
+    "imagen": "arroz.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Fideos",
+    "precio": 300,
+    "categoria": "Pastas",
+    "imagen": "fideos.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Alfajor",
+    "precio": 400,
+    "categoria": "Golosinas",
+    "imagen": "alfajor.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Pan",
+    "precio": 200,
+    "categoria": "Panadería",
+    "imagen": "pan.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Arroz integral",
+    "precio": 300,
+    "categoria": "Granos",
+    "imagen": "arroz_integral.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Chocolate",
+    "precio": 300,
+    "categoria": "Golosinas",
+    "imagen": "chocolate.jpg"
+  }
+]
