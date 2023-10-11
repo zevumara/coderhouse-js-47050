@@ -25,6 +25,12 @@
         margin: auto;
         border: 10px solid white;
         margin-top: 20px;
+        text-transform: capitalize;
+      }
+      span {
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 5px;
       }
     </style>
   </head>
@@ -35,6 +41,59 @@
     <div id="infoPokedex">
       <!-- Acá vamos a mostrar la info del pokémon solicitado. -->
     </div>
-    <script></script>
+    <script>
+      const formPokemon = document.querySelector("#formPokedex");
+      const divInfoPokedex = document.querySelector("#infoPokedex");
+      const inputPokemon = document.querySelector("#inputPokemon");
+
+      // Evento formulario que se dispara cuando envía el formulario
+      formPokemon.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const pokemon = inputPokemon.value;
+        divInfoPokedex.innerHTML =
+          "<img width='80%' src='https://i.gifer.com/LCPT.gif' alt='Cargando'>";
+        cargarPokemon(pokemon);
+        //console.log("Buscar pokémon: " + pokemon);
+      });
+
+      // Función para ejecutar el fetch, que siempre devuelve una promesa
+      // function cargarPokemon(pokemon) {
+      //   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
+      //     .then((reponse) => reponse.json())
+      //     .then((infoPokemon) => {
+      //       // Acá vamos a hacer la lógica de que muestre
+      //       // los datos en el DOM
+      //       console.log(infoPokemon);
+      //       divInfoPokedex.innerHTML = `
+      //         <h1>#${infoPokemon.id} - ${infoPokemon.name}</h1>
+      //         <img src="${infoPokemon.sprites.other.dream_world.front_default}" alt="${infoPokemon.name}"/>
+      //         <p>
+      //           <span>HP: ${infoPokemon.stats[0].base_stat}</span>
+      //           <span>Altura: ${infoPokemon.height} mt</span>
+      //           <span>Peso: ${infoPokemon.weight} kg</span>
+      //         </p>
+      //       `;
+      //     })
+      //     .catch((error) => {
+      //       alert("El pokémon que pusiste no existe.");
+      //       console.log("Error: " + error);
+      //     });
+      // }
+
+      // Versión fachera
+      async function cargarPokemon(pokemon) {
+        const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`);
+        const infoPokemon = await respuesta.json();
+        divInfoPokedex.innerHTML = `
+              <h1>#${infoPokemon.id} - ${infoPokemon.name}</h1>
+              <img src="${infoPokemon.sprites.other.dream_world.front_default}" alt="${infoPokemon.name}"/>
+              <p>
+                <span>HP: ${infoPokemon.stats[0].base_stat}</span>
+                <span>Altura: ${infoPokemon.height} mt</span>
+                <span>Peso: ${infoPokemon.weight} kg</span>
+              </p>
+            `;
+      }
+    </script>
   </body>
 </html>
