@@ -1,7 +1,7 @@
 /*
- Objetivos para la tercer pre-entrega:
- - Aplicar API de Mercado Libre
- - Usar un loading fachero
+ Objetivos:
+ - Aplicar API de Mercado Libre ✅
+ - Usar un loading fachero ✅
 */
 
 // Clase "molde" para los productos de nuestra aplicación
@@ -19,16 +19,64 @@ class Producto {
 // todos los productos de nuestro catálogo
 class BaseDeDatos {
   constructor() {
-    // Array para el catálogo
-    this.productos = [];
     //
-    this.cargarRegistros();
+    this.categoriaSeleccionada = "MLA438566";
+    this.limiteProductos = 12;
+    this.cargarRegistrosPorCategoria();
   }
 
-  async cargarRegistros() {
-    const resultado = await fetch("./json/productos.json");
-    this.productos = await resultado.json();
+  // Carga los productos por categorías en la API
+  async cargarRegistrosPorCategoria(categoria = this.categoriaSeleccionada) {
+    // Loader
+    mostrarLoader();
+    this.categoriaSeleccionada = categoria;
+    // Array para el catálogo
+    this.productos = [];
+    const respuesta = await fetch(
+      `https://api.mercadolibre.com/sites/MLA/search?category=${categoria}&limit=${this.limiteProductos}&offset=2`
+    );
+    const resultado = await respuesta.json();
+    const productosML = resultado.results;
+    for (const productoML of productosML) {
+      const producto = new Producto(
+        productoML.id,
+        productoML.title,
+        productoML.price,
+        categoria,
+        productoML.thumbnail_id
+      );
+      this.productos.push(producto);
+    }
     cargarProductos(this.productos);
+    // Cierra todos los sweet alert que estén activos
+    Swal.close();
+  }
+
+  // Para el buscador, buscar productos por nombre en la API
+  async cargarRegistrosPorNombre(palabra) {
+    // Loader
+    mostrarLoader();
+    // Array para el catálogo
+    this.productos = [];
+    const respuesta = await fetch(
+      `https://api.mercadolibre.com/sites/MLA/search?category=${this.categoriaSeleccionada}&q=${palabra}&limit=${this.limiteProductos}&offset=0
+      `
+    );
+    const resultado = await respuesta.json();
+    const productosML = resultado.results;
+    for (const productoML of productosML) {
+      const producto = new Producto(
+        productoML.id,
+        productoML.title,
+        productoML.price,
+        this.categoriaSeleccionada,
+        productoML.thumbnail_id
+      );
+      this.productos.push(producto);
+    }
+    cargarProductos(this.productos);
+    // Cierra todos los sweet alert que estén activos
+    Swal.close();
   }
 
   // Nos devuelve todo el catálogo de productos
@@ -39,18 +87,6 @@ class BaseDeDatos {
   // Nos devuelve un producto según el ID
   registroPorId(id) {
     return this.productos.find((producto) => producto.id === id);
-  }
-
-  // Nos devuelve un array con todas las coincidencias que encuentre según el
-  // nombre del producto con la palabra que el pasemos como parámetro
-  registrosPorNombre(palabra) {
-    return this.productos.filter((producto) =>
-      producto.nombre.toLowerCase().includes(palabra.toLowerCase())
-    );
-  }
-
-  registrosPorCategoria(categoria) {
-    return this.productos.filter((producto) => producto.categoria == categoria);
   }
 }
 
@@ -108,6 +144,7 @@ class Carrito {
     this.listar();
   }
 
+  // Vaciar el carrito
   vaciar() {
     this.total = 0;
     this.cantidadProductos = 0;
@@ -152,7 +189,7 @@ class Carrito {
       boton.addEventListener("click", (event) => {
         event.preventDefault();
         // Obtengo el id por el dataset (está asignado en this.listar())
-        const idProducto = Number(boton.dataset.id);
+        const idProducto = boton.dataset.id;
         // Llamo al método quitar pasándole el ID del producto
         this.quitar(idProducto);
       });
@@ -179,6 +216,7 @@ const bd = new BaseDeDatos();
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
 
+// Botones de categorías
 botonesCategorias.forEach((boton) => {
   boton.addEventListener("click", () => {
     const categoria = boton.dataset.categoria;
@@ -187,11 +225,7 @@ botonesCategorias.forEach((boton) => {
     botonSeleccionado.classList.remove("seleccionado");
     // Se lo agrego a este botón
     boton.classList.add("seleccionado");
-    if (categoria == "Todos") {
-      cargarProductos(bd.traerRegistros());
-    } else {
-      cargarProductos(bd.registrosPorCategoria(categoria));
-    }
+    bd.cargarRegistrosPorCategoria(categoria);
   });
 });
 
@@ -209,7 +243,7 @@ function cargarProductos(productos) {
         <h2>${producto.nombre}</h2>
         <p class="precio">$${producto.precio}</p>
         <div class="imagen">
-          <img src="img/${producto.imagen}" />
+          <img src="https://http2.mlstatic.com/D_604790-${producto.imagen}-V.webp" />
         </div>
         <a href="#" class="btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
       </div>
@@ -226,7 +260,7 @@ function cargarProductos(productos) {
       // Evita el comportamiento default de HTML
       event.preventDefault();
       // Guardo el dataset ID que está en el HTML del botón Agregar al carrito
-      const idProducto = Number(boton.dataset.id);
+      const idProducto = boton.dataset.id;
       // Uso el método de la base de datos para ubicar el producto según el ID
       const producto = bd.registroPorId(idProducto);
       // Llama al método agregar del carrito
@@ -244,12 +278,24 @@ function cargarProductos(productos) {
   }
 }
 
+// Función para mostrar el loader
+function mostrarLoader() {
+  Swal.fire({
+    title: "Cargando",
+    html: "Estamos buscando productos...",
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.showLoading();
+    },
+  });
+}
+
 // Buscador
-inputBuscar.addEventListener("input", (event) => {
+formBuscar.addEventListener("submit", (event) => {
   event.preventDefault();
   const palabra = inputBuscar.value;
-  const productos = bd.registrosPorNombre(palabra);
-  cargarProductos(productos);
+  bd.cargarRegistrosPorNombre(palabra);
 });
 
 // Toggle para ocultar/mostrar el carrito

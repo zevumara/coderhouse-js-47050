@@ -1,5 +1,5 @@
 /*
- Objetivos para la tercer pre-entrega:
+ Objetivos para el proyecto final:
  - Aplicar fetch (asincroismo) al proyecto ✅
   - Cargar productos desde un archivo .JSON ✅
   - Categorías ✅
@@ -23,10 +23,12 @@ class BaseDeDatos {
   constructor() {
     // Array para el catálogo
     this.productos = [];
-    //
+    // Apenas se instancia la case BaseDeDatos, llamamos
+    // a la función asincrónica
     this.cargarRegistros();
   }
 
+  // Función asincrónica para cargar los productos desde un JSON
   async cargarRegistros() {
     const resultado = await fetch("./json/productos.json");
     this.productos = await resultado.json();
@@ -51,6 +53,8 @@ class BaseDeDatos {
     );
   }
 
+  // Nos devuelve un array con todos los productos que tengan la categoría
+  // que le pasamos como parámetro
   registrosPorCategoria(categoria) {
     return this.productos.filter((producto) => producto.categoria == categoria);
   }
@@ -110,6 +114,7 @@ class Carrito {
     this.listar();
   }
 
+  // Vaciar el carrito
   vaciar() {
     this.total = 0;
     this.cantidadProductos = 0;
