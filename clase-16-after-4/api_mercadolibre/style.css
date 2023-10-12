@@ -6,6 +6,7 @@
 body {
   font-family: "Inter", sans-serif;
   background-color: #222;
+  padding-bottom: 40px;
 }
 main {
   width: 60%;
